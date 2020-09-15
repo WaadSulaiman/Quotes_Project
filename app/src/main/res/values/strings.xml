@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Quotes</string>
+    <string name="quotation_mark_start">“</string>
+    <string name="quotation_mark_end">”</string>
+    <string name="category_text_navigation">Category</string>
+    <string name="favorite_text_navigation">Favorite</string>
+    <string name="quotes_text_navigation">Quotes</string>
+    <string name="categories">Categories</string>
+    <string name="by_unknown">Unknown</string>
+</resources>

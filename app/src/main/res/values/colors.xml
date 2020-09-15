@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <!--the color of cards that will hold the quotes-->
+    <color name="cardOrange">#DB6601</color>
+    <color name="cardLightBlue">#1BB3B7</color>
+    <color name="cardLightGreen">#48D58E</color>
+    <color name="cardLightDarkBlue">#72ACE6</color>
+    <color name="cardGrey">#39393D</color>
+    <color name="cardRed">#FF0000</color>
+    <color name="brightBlue">#1ADEDE</color>
+
+    <!--the color of texts-->
+    <color name="selectedItemTextColor">#1B222B</color>
+    <color name="unselectedItemTextColor">#BEC9D3</color>
+    <color name="titleTextColor">#394756</color>
+</resources>
