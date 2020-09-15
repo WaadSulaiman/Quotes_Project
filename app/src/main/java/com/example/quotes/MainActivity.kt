@@ -4,10 +4,11 @@ package com.example.quotes
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.quotes.fragments.CategoryFragment
+import com.example.quotes.fragments.CategoriesFragment
 import com.example.quotes.fragments.FavoriteFragment
 import com.example.quotes.fragments.HomeFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,30 +16,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNav.setOnNavigationItemSelectedListener(nabListener)
 
-        val homeFragment = HomeFragment()
-        val categoryFragment = CategoryFragment()
-        val favoriteFragment = FavoriteFragment()
-
-        makeCurrentFragment(homeFragment)
-
-        layout_main_activity_bottom_navigation_bar.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.quote_page -> makeCurrentFragment(homeFragment)
-                R.id.category_page -> makeCurrentFragment(categoryFragment)
-                R.id.favorite_page -> makeCurrentFragment(favoriteFragment)
-            }
-            true
-
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment()).commit()
         }
     }
 
+    private val nabListener = BottomNavigationView.OnNavigationItemSelectedListener {
+        var selectedFragment: Fragment? = null
 
-    private fun makeCurrentFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.layout_main_activity_frame_layout, fragment)
-            commit()
+        when (it.itemId) {
+            R.id.quote_page -> selectedFragment = HomeFragment()
+            R.id.category_page -> selectedFragment = CategoriesFragment()
+            R.id.favorite_page -> selectedFragment = FavoriteFragment()
         }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, selectedFragment!!).commit()
+
+        true
     }
 
 }

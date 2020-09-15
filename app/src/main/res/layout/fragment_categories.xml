@@ -3,29 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".fragments.CategoryFragment">
+    tools:context=".fragments.CategoriesFragment">
 
     <TextView
-        android:id="@+id/layout_fragment_category_textView_title"
+        android:id="@+id/layout_fragment_categories_textView_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:elevation="10dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/categories"
         android:textColor="@color/titleTextColor"
         android:textSize="40sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/layout_fragment_category_recycler_view"
+        android:id="@+id/layout_fragment_categories_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
         android:layout_marginTop="50dp"
-        android:orientation="horizontal"
-        android:scrollbarFadeDuration="@integer/anim_length" />
+        android:orientation="horizontal" />
 
 </LinearLayout>
