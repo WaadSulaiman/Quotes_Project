@@ -12,6 +12,8 @@
     <color name="cardGrey">#39393D</color>
     <color name="cardRed">#FF0000</color>
     <color name="brightBlue">#1ADEDE</color>
+    <color name="categoriesColorStart">#EA6B40</color>
+    <color name="categoriesColorEnd">#D13672</color>
 
     <!--the color of texts-->
     <color name="selectedItemTextColor">#1B222B</color>

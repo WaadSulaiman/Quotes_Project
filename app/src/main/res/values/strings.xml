@@ -7,6 +7,4 @@
     <string name="quotes_text_navigation">Quotes</string>
     <string name="categories">Categories</string>
     <string name="by_unknown">Unknown</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
