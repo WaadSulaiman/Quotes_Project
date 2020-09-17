@@ -1,7 +1,6 @@
 package com.example.quotes.activitys
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
@@ -22,10 +21,9 @@ class CurrentCategory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_current_category)
-        Log.d("URL", "hello")
+
         layout_current_category_textView_title.text = intent.getStringExtra("Category")
         url = intent.getStringExtra("url")
-        //adapter = CategoryAdapter(dataQuotes)
         current_category_recycler_view.apply {
             loadData()
             adapter = CategoryAdapter(dataQuotes)
@@ -50,6 +48,7 @@ class CurrentCategory : AppCompatActivity() {
                 }
             } catch (event: JSONException) {
             }
+            dataQuotes.shuffle()
             adapter = CategoryAdapter(dataQuotes)
             current_category_recycler_view.adapter = adapter
 

@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quotes.R
+import com.example.quotes.data.SampleSQLiteDBHelper
 import com.example.quotes.models.QuoteModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -31,6 +32,7 @@ class CustomAdapter(private val quoteList: MutableList<QuoteModel>) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val db: SampleSQLiteDBHelper = SampleSQLiteDBHelper(itemView.context)
         private val cardView: CardView = itemView.findViewById(R.id.card_view_front)
         private val textViewQuote: TextView = itemView.findViewById(R.id.quote_text)
         private val textViewAuthor: TextView = itemView.findViewById(R.id.author_text)
@@ -43,6 +45,7 @@ class CustomAdapter(private val quoteList: MutableList<QuoteModel>) :
             }
 
             cardView.setOnLongClickListener {
+                db.saveToDB(quote.quoteText, quote.author)
                 Snackbar.make(itemView, "Quote added to favorites", Snackbar.LENGTH_SHORT).show()
                 true
             }

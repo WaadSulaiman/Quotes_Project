@@ -18,6 +18,7 @@
         android:textSize="40sp" />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/layout_fragment_home_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
