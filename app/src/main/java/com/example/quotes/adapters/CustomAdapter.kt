@@ -46,7 +46,7 @@ class CustomAdapter(private val quoteList: MutableList<QuoteModel>) :
 
             cardView.setOnLongClickListener {
                 db.saveToDB(quote.quoteText, quote.author)
-                Snackbar.make(itemView, "Quote added to favorites", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(itemView, "Quote added to favorites.", Snackbar.LENGTH_SHORT).show()
                 true
             }
         }

@@ -10,9 +10,9 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.quotes.R
-import com.example.quotes.TopSpacingDecoration
 import com.example.quotes.adapters.CustomAdapter
 import com.example.quotes.models.QuoteModel
+import com.example.quotes.widgets.TopSpacingDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONArray
 import org.json.JSONException

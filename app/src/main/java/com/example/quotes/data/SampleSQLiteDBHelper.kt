@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 
 
 class SampleSQLiteDBHelper(val context: Context?) :
@@ -20,7 +19,7 @@ class SampleSQLiteDBHelper(val context: Context?) :
     }
 
     override fun onUpgrade(sqLiteDatabase: SQLiteDatabase, i: Int, i1: Int) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + QUOTE_TABLE_NAME)
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS $QUOTE_TABLE_NAME")
         onCreate(sqLiteDatabase)
     }
 
@@ -33,31 +32,33 @@ class SampleSQLiteDBHelper(val context: Context?) :
         const val QUOTE_COLUMN_AUTHOR = "author"
     }
 
+    fun checkIfQuote(QUOTE: String, AUTHOR: String) {
+    }
+
     fun saveToDB(QUOTE: String, AUTHOR: String) {
         val database = SampleSQLiteDBHelper(context).writableDatabase
         val values = ContentValues()
         values.put(
-            SampleSQLiteDBHelper.QUOTE_COLUMN_QUOTE,
+            QUOTE_COLUMN_QUOTE,
             QUOTE
         )
         values.put(
-            SampleSQLiteDBHelper.QUOTE_COLUMN_AUTHOR,
+            QUOTE_COLUMN_AUTHOR,
             AUTHOR
         )
-        database.insert(SampleSQLiteDBHelper.QUOTE_TABLE_NAME, null, values)
-        Log.d("Saved", "Item")
+        database.insert(QUOTE_TABLE_NAME, null, values)
     }
 
     fun readFromDB(): Cursor {
         val database = SampleSQLiteDBHelper(context).readableDatabase
         val projection = arrayOf<String>(
-            SampleSQLiteDBHelper.QUOTE_COLUMN_ID,
-            SampleSQLiteDBHelper.QUOTE_COLUMN_QUOTE,
-            SampleSQLiteDBHelper.QUOTE_COLUMN_AUTHOR,
+            QUOTE_COLUMN_ID,
+            QUOTE_COLUMN_QUOTE,
+            QUOTE_COLUMN_AUTHOR,
         )
 
-        val cursor: Cursor = database.query(
-            SampleSQLiteDBHelper.QUOTE_TABLE_NAME,
+        return database.query(
+            QUOTE_TABLE_NAME,
             projection,
             null,
             null,
@@ -65,14 +66,12 @@ class SampleSQLiteDBHelper(val context: Context?) :
             null,
             null
         )
-
-        Log.d("TAG", "The total cursor count is " + cursor.getCount())
-        return cursor
     }
 
-    fun delete(_id: Long) {
+    fun remove(id: Int) : Boolean{
         val database = SampleSQLiteDBHelper(context).writableDatabase
-        database.delete(QUOTE_TABLE_NAME, QUOTE_COLUMN_ID + "=" + _id, null)
+        return database.delete(QUOTE_TABLE_NAME, "$QUOTE_COLUMN_ID=$id", null) > 0
     }
+
 
 }

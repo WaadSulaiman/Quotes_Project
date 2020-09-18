@@ -7,7 +7,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.quotes.R
-import com.example.quotes.TopSpacingDecoration
+import com.example.quotes.widgets.TopSpacingDecoration
 import com.example.quotes.adapters.CategoryAdapter
 import com.example.quotes.models.QuoteModel
 import kotlinx.android.synthetic.main.activity_current_category.*

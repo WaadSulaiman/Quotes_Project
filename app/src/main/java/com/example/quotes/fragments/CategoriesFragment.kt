@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.example.quotes.LeftSpacingDecoration
 import com.example.quotes.R
 import com.example.quotes.adapters.CategoriesAdapter
 import com.example.quotes.models.CategoryModel
+import com.example.quotes.widgets.LeftSpacingDecoration
 import kotlinx.android.synthetic.main.fragment_categories.*
 import org.json.JSONException
 
@@ -56,6 +56,7 @@ class CategoriesFragment : Fragment() {
                 }
             } catch (event: JSONException) {
             }
+            categories.shuffle()
             categoriesAdapter = CategoriesAdapter(categories)
             layout_fragment_categories_recyclerView.adapter = categoriesAdapter
 
