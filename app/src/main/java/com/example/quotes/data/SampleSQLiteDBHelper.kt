@@ -16,10 +16,19 @@ class SampleSQLiteDBHelper(val context: Context?) :
                     QUOTE_COLUMN_QUOTE + " TEXT, " +
                     QUOTE_COLUMN_AUTHOR + " TEXT " + ")"
         )
+        sqLiteDatabase.execSQL(
+            "CREATE TABLE " + QUOTE_TABLE_OWN_NAME + " (" +
+                    QUOTE_TABLE_OWN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    QUOTE_TABLE_OWN_QUOTE + " TEXT, " +
+                    QUOTE_TABLE_OWN_AUTHOR + " TEXT " + ")"
+        )
+
     }
 
     override fun onUpgrade(sqLiteDatabase: SQLiteDatabase, i: Int, i1: Int) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS $QUOTE_TABLE_NAME")
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS $QUOTE_TABLE_OWN_NAME")
+
         onCreate(sqLiteDatabase)
     }
 
@@ -30,6 +39,11 @@ class SampleSQLiteDBHelper(val context: Context?) :
         const val QUOTE_COLUMN_ID = "_id"
         const val QUOTE_COLUMN_QUOTE = "quote"
         const val QUOTE_COLUMN_AUTHOR = "author"
+
+        const val QUOTE_TABLE_OWN_NAME = "Own"
+        const val QUOTE_TABLE_OWN_ID = "_id"
+        const val QUOTE_TABLE_OWN_QUOTE = "quote"
+        const val QUOTE_TABLE_OWN_AUTHOR = "author"
     }
 
     fun checkIfQuote(QUOTE: String, AUTHOR: String) {
@@ -47,6 +61,39 @@ class SampleSQLiteDBHelper(val context: Context?) :
             AUTHOR
         )
         database.insert(QUOTE_TABLE_NAME, null, values)
+    }
+
+    fun saveToDBTableOwn(QUOTE: String, AUTHOR: String) {
+        val database = SampleSQLiteDBHelper(context).writableDatabase
+        val values = ContentValues()
+        values.put(
+            QUOTE_TABLE_OWN_QUOTE,
+            QUOTE
+        )
+        values.put(
+            QUOTE_TABLE_OWN_AUTHOR,
+            AUTHOR
+        )
+        database.insert(QUOTE_TABLE_OWN_NAME, null, values)
+    }
+
+    fun readFromDBTableOwn(): Cursor {
+        val database = SampleSQLiteDBHelper(context).readableDatabase
+        val projection = arrayOf<String>(
+            QUOTE_TABLE_OWN_ID,
+            QUOTE_TABLE_OWN_QUOTE,
+            QUOTE_TABLE_OWN_AUTHOR,
+        )
+
+        return database.query(
+            QUOTE_TABLE_OWN_NAME,
+            projection,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
     }
 
     fun readFromDB(): Cursor {
@@ -68,7 +115,12 @@ class SampleSQLiteDBHelper(val context: Context?) :
         )
     }
 
-    fun remove(id: Int) : Boolean{
+    fun removeFromTableOwn(id: Int): Boolean {
+        val database = SampleSQLiteDBHelper(context).writableDatabase
+        return database.delete(QUOTE_TABLE_OWN_NAME, "$QUOTE_TABLE_OWN_ID=$id", null) > 0
+    }
+
+    fun remove(id: Int): Boolean {
         val database = SampleSQLiteDBHelper(context).writableDatabase
         return database.delete(QUOTE_TABLE_NAME, "$QUOTE_COLUMN_ID=$id", null) > 0
     }

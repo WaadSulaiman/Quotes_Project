@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/D:/AndroidStudio/plugins/android/lib/android.jar!/images/material/icons/materialicons/favorite/baseline_favorite_24.xml" />
+                                      <entry key="url" value="jar:file:/D:/AndroidStudio/plugins/android/lib/android.jar!/images/material/icons/materialiconsoutlined/add/outline_add_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="bec9d3" />
-                            <entry key="outputName" value="heart_selected" />
+                            <entry key="outputName" value="add_icon" />
                             <entry key="sourceFile" value="D:\Projects\Android Studio\Quotes" />
                           </map>
                         </option>

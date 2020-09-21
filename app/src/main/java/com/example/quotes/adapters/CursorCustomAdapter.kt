@@ -2,12 +2,10 @@ package com.example.quotes.adapters
 
 import android.content.Context
 import android.database.Cursor
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CursorAdapter
-import android.widget.ListView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.example.quotes.R
@@ -32,7 +30,11 @@ class CursorCustomAdapter(context: Context, cursor: Cursor) : CursorAdapter(cont
         quoteTextView?.text = cursor?.getString(1)
         quoteTextAuthor?.text = cursor?.getString(2)
         cardView?.setOnLongClickListener {
-            Snackbar.make(view, "Quote deleted. On next refresh, quote will be gone.", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(
+                view,
+                "Quote deleted. On next refresh, quote will be gone.",
+                Snackbar.LENGTH_SHORT
+            ).show()
             database.remove(id!!.toInt())
             true
         }

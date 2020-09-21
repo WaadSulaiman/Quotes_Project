@@ -11,6 +11,11 @@
         android:title="@string/category_text_navigation"
         />
     <item
+        android:id="@+id/create_page"
+        android:icon="@drawable/create_unselected"
+        android:title="Create"
+        />
+    <item
         android:id="@+id/favorite_page"
         android:icon="@drawable/heart_unselected"
         android:title="@string/favorite_text_navigation"

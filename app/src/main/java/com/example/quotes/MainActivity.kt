@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.quotes.fragments.CategoriesFragment
+import com.example.quotes.fragments.CreateFragment
 import com.example.quotes.fragments.FavoriteFragment
 import com.example.quotes.fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         when (it.itemId) {
             R.id.quote_page -> selectedFragment = HomeFragment()
             R.id.category_page -> selectedFragment = CategoriesFragment()
+            R.id.create_page -> selectedFragment = CreateFragment()
             R.id.favorite_page -> selectedFragment = FavoriteFragment()
         }
         supportFragmentManager.beginTransaction()

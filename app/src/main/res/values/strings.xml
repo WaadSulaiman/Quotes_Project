@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quotes</string>
+    <string name="app_name">Motivational Quotes | Inspiring</string>
     <string name="quotation_mark_start">“</string>
     <string name="quotation_mark_end">”</string>
     <string name="category_text_navigation">Category</string>
@@ -7,4 +7,9 @@
     <string name="quotes_text_navigation">Quotes</string>
     <string name="categories">Categories</string>
     <string name="by_unknown">Unknown</string>
+    <string name="create">Create</string>
+    <string name="author_edit_text">Author</string>
+    <string name="quote_edit_text">Quote</string>
+    <string name="add_button_text">add</string>
+    <string name="cancel_button">Cancel</string>
 </resources>
