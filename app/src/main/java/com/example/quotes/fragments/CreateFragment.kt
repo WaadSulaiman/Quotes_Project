@@ -20,10 +20,11 @@ import kotlinx.android.synthetic.main.fragment_create.*
 
 
 class CreateFragment : Fragment() {
+    private lateinit var cursor: Cursor
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cursor: Cursor = SampleSQLiteDBHelper(view.context).readFromDBTableOwn()
+        cursor = SampleSQLiteDBHelper(view.context).readFromDBTableOwn()
         list_view_own_quotes.adapter = OwnCursorCustomAdapter(view.context, cursor)
 
         floating.setOnClickListener {
@@ -56,6 +57,7 @@ class CreateFragment : Fragment() {
             Snackbar.make(it, "Quote creation canceled!", Snackbar.LENGTH_SHORT).show()
 
         }
+
         addButton.setOnClickListener {
             if (text_quote_input.text.isEmpty() || text_author_input.text.isEmpty()) {
                 Snackbar.make(it, "Please fill the text fields.", Snackbar.LENGTH_SHORT).show()
@@ -69,7 +71,12 @@ class CreateFragment : Fragment() {
             floating.visibility = FloatingActionButton.VISIBLE
             cardView.visibility = CardView.GONE
             list_view_own_quotes.visibility = ListView.VISIBLE
-            Snackbar.make(it, "Quote created, and saved locally. On next refresh, quote will show.", Snackbar.LENGTH_SHORT).show()
+            val imm: InputMethodManager =
+                context!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+            cursor = SampleSQLiteDBHelper(view.context).readFromDBTableOwn()
+            list_view_own_quotes.adapter = OwnCursorCustomAdapter(view.context, cursor)
+            Snackbar.make(it, "Quote saved locally.", Snackbar.LENGTH_SHORT).show()
 
         }
 
@@ -80,7 +87,6 @@ class CreateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_create, container, false)
     }
 }

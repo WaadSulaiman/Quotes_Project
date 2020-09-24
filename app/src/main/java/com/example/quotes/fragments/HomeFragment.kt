@@ -12,7 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.example.quotes.R
 import com.example.quotes.adapters.CustomAdapter
 import com.example.quotes.models.QuoteModel
-import com.example.quotes.widgets.TopSpacingDecoration
+import com.example.quotes.widgets.SpacingDecoration
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -32,7 +32,7 @@ class HomeFragment() : Fragment() {
             setHasFixedSize(true)
             fetchData()
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(TopSpacingDecoration(30))
+            addItemDecoration(SpacingDecoration(15, 30, 30, 15))
             adapter = adapter
         }
 

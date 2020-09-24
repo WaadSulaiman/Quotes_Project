@@ -46,7 +46,6 @@ class CategoryAdapter(private val quoteList: MutableList<QuoteModel>) :
             cardView.setOnClickListener {
                 db.saveToDB(quote.quoteText ?: "", quote.author ?: "")
                 Snackbar.make(itemView, "Quote added to favorite.", Snackbar.LENGTH_SHORT).show()
-                true
             }
         }
 

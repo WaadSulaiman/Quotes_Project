@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.quotes.R
 import com.example.quotes.adapters.CategoriesAdapter
 import com.example.quotes.models.CategoryModel
-import com.example.quotes.widgets.LeftSpacingDecoration
+import com.example.quotes.widgets.SpacingDecoration
 import kotlinx.android.synthetic.main.fragment_categories.*
 import org.json.JSONException
 
@@ -27,9 +27,9 @@ class CategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         layout_fragment_categories_recyclerView.apply {
             loadData()
-            addItemDecoration(LeftSpacingDecoration(30))
+            addItemDecoration(SpacingDecoration(15, 10, 10, 15))
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
             adapter = CategoriesAdapter(categories)
         }
     }

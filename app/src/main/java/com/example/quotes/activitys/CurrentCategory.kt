@@ -7,9 +7,9 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.quotes.R
-import com.example.quotes.widgets.TopSpacingDecoration
 import com.example.quotes.adapters.CategoryAdapter
 import com.example.quotes.models.QuoteModel
+import com.example.quotes.widgets.SpacingDecoration
 import kotlinx.android.synthetic.main.activity_current_category.*
 import org.json.JSONException
 
@@ -28,7 +28,7 @@ class CurrentCategory : AppCompatActivity() {
             loadData()
             adapter = CategoryAdapter(dataQuotes)
             layoutManager = LinearLayoutManager(this@CurrentCategory)
-            addItemDecoration(TopSpacingDecoration(30))
+            addItemDecoration(SpacingDecoration(15, 30, 30, 15))
         }
 
     }

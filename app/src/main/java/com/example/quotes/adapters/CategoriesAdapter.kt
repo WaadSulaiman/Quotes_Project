@@ -26,8 +26,6 @@ class CategoriesAdapter(private val categories: MutableList<CategoryModel>) :
                 startActivity(it.context, intent, null)
             }
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

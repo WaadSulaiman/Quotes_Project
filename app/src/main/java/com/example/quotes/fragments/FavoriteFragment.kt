@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.quotes.R
-import com.example.quotes.adapters.CursorCustomAdapter
+import com.example.quotes.adapters.FavoriteCursorCustomAdapter
 import com.example.quotes.data.SampleSQLiteDBHelper
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
@@ -16,7 +16,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val cursor: Cursor = SampleSQLiteDBHelper(view.context).readFromDB()
-        listView.adapter = CursorCustomAdapter(view.context, cursor)
+        listView.adapter = FavoriteCursorCustomAdapter(view.context, cursor)
 
     }
 
